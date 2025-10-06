@@ -1,5 +1,4 @@
-# libraryflow
-A secure-by-default library management system built with Flask and SQLite. Features user authentication, book lending, and transaction tracking, with built-in examples of secure coding practices.
+
 
 # 📚 LibraryFlow
 
