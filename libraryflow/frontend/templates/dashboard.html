@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Hi {{ user.username }} 👋</h2>
+
+<section class="grid">
+  <div class="card">
+    <h3>Available books</h3>
+    {% if session.get('role') == 'admin' %}
+    <form method="post" action="{{ url_for('add_book') }}" class="row">
+      <input name="title" placeholder="Title" required>
+      <input name="author" placeholder="Author" required>
+      <input name="copies" type="number" min="1" value="1" required>
+      <button class="btn" type="submit">Add</button>
+    </form>
+    {% endif %}
+    <ul>
+      {% for b in books %}
+        <li>
+          <span class="book">{{ b.title }} — {{ b.author }} ({{ b.copies }} copies)</span>
+          {% if b.copies > 0 %}
+          <form method="post" action="{{ url_for('borrow', book_id=b.id) }}" style="display:inline">
+            <button class="btn small" type="submit">Borrow</button>
+          </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Your loans</h3>
+    <ul>
+      {% for l in loans %}
+        <li>
+          [{{ l.action }}] Book #{{ l.book_id }} at {{ l.timestamp }}
+          {% if not l.returned %}
+          <form method="post" action="{{ url_for('return_book', loan_id=l.id) }}" style="display:inline">
+            <button class="btn small" type="submit">Return</button>
+          </form>
+          {% else %}(returned at {{ l.returned_at }}){% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

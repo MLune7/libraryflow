@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>LibraryFlow – Security Review</title>
+<style>
+body{font-family:system-ui,Segoe UI,Roboto,Arial;background:#0f172a;color:#e5e7eb;margin:0}
+.slide{min-height:100vh;padding:6vh 8vw;display:flex;flex-direction:column;justify-content:center}
+h1,h2{margin:.2em 0}
+section{border-bottom:1px solid #1f2937}
+code,pre{background:#111827;padding:.5em;border-radius:10px;display:block;overflow:auto}
+img{max-width:100%;border:1px solid #1f2937;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+.kicker{opacity:.7}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="kicker">LibraryFlow</div>
+  <h1>Algorithms re-used. Domain changed.</h1>
+  <p>Register/Login → Books (inventory) → Loan Transactions (borrow/return). Secure by default.</p>
+</section>
+<section class="slide">
+  <h2>Executive Summary</h2>
+  <ul>
+    <li>Same patterns as bank app (users, balances → copies, transactions → loans)</li>
+    <li>Flask + SQLAlchemy + Jinja2</li>
+    <li>Secure defaults; vulnerabilities described as non-executable demos</li>
+  </ul>
+</section>
+<section class="slide">
+  <h2>Testing Methodology</h2>
+  <ul>
+    <li>Functional paths, input validation</li>
+    <li>Manual security checks (auto-escaping, ORM)</li>
+    <li>Simulated scan logs</li>
+  </ul>
+</section>
+<section class="slide">
+  <h2>SQL Injection: Before/After</h2>
+  <img src="report_assets/unsafe_sql.png" alt="Unsafe SQL">
+  <img src="report_assets/safe_sql.png" alt="Safe SQL">
+</section>
+<section class="slide">
+  <h2>XSS: Before/After</h2>
+  <img src="report_assets/unsafe_xss.png" alt="Unsafe XSS">
+  <img src="report_assets/safe_xss.png" alt="Safe XSS">
+</section>
+</body></html>

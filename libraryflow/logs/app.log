@@ -1,0 +1,3 @@
+[2025-08-15 10:06:00] INFO User 'alice' registered
+[2025-08-15 10:06:40] INFO User 'alice' borrowed book #1
+[2025-08-15 10:07:10] INFO User 'alice' returned loan #1
